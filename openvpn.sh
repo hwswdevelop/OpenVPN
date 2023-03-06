@@ -106,7 +106,7 @@ echo "Keys are generated"
 echo "Generating OpenVPN Server config"
 cat >server.conf<<EOF
 proto tcp
-port 10194
+port 1194
 dev tun0
 ca /etc/openvpn/keys/ca.crt
 cert /etc/openvpn/keys/server.crt
@@ -131,7 +131,7 @@ cat >client.conf<<EOF
 client
 proto tcp
 dev tun0
-remote 90.156.230.243 10194
+remote a.b.c.d 1194
 dhcp-option DNS 8.8.8.8
 dhcp-option DNS 8.8.4.4
 resolv-retry infinite
