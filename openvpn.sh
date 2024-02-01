@@ -25,7 +25,7 @@ encrypt_key = no
 distinguished_name = dn
 [ dn ]
 C = RU
-O = vrnnet.ru
+O = yourdomain.com
 CN = ca
 EOF
 
@@ -40,7 +40,7 @@ encrypt_key = no
 distinguished_name = dn
 [ dn ]
 C = RU
-O = vrnnet.ru
+O = yourdomain.com
 CN = server 
 EOF
 
@@ -55,7 +55,7 @@ encrypt_key = no
 distinguished_name = dn
 [ dn ]
 C = RU
-O = vrnnet.ru
+O = yourdomain.com
 CN = client
 EOF
 
@@ -106,7 +106,7 @@ echo "Keys are generated"
 echo "Generating OpenVPN Server config"
 cat >server.conf<<EOF
 proto tcp
-port 1194
+port 443
 dev tun0
 ca /etc/openvpn/keys/ca.crt
 cert /etc/openvpn/keys/server.crt
@@ -131,7 +131,7 @@ cat >client.conf<<EOF
 client
 proto tcp
 dev tun0
-remote a.b.c.d 1194
+remote a.b.c.d 443
 dhcp-option DNS 8.8.8.8
 dhcp-option DNS 8.8.4.4
 resolv-retry infinite
