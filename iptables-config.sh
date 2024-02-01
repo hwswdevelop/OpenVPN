@@ -22,7 +22,7 @@ iptables -t filter -A OUTPUT -o lo -s 127.0.0.1 -d 127.0.0.1 -j ACCEPT
 iptables -t filter -A OUTPUT -o ${WAN} -p udp --dport 67 --sport 68 -j ACCEPT
 iptables -t filter -A OUTPUT -o ${WAN} -p udp --dport 53 -j ACCEPT
 iptables -t filter -A OUTPUT -o ${WAN} -p icmp --icmp-type 8 -j ACCEPT
-iptables -t fitler -A OUTPUT -o ${WAN} -p tcp --dport 443 -j ACCEPT
+iptables -t filter -A OUTPUT -o ${WAN} -p tcp --dport 443 -j ACCEPT
 iptables -t filter -A OUTPUT -o ${WAN} -p tcp --sport 22 -j ACCEPT
 iptables -t filter -A OUTPUT -o ${WAN} -p tcp --sport 443 -j ACCEPT
 iptables -t filter -A OUTPUT -j DROP
@@ -30,7 +30,7 @@ iptables -t filter -A OUTPUT -j DROP
 iptables -t filter -F FORWARD
 iptables -t filter -A FORWARD -i ${WAN} -o ${TUN} -j ACCEPT
 iptables -t filter -A FORWARD -i ${TUN} -o ${WAN} -j ACCEPT
-iptables -t filter -j DROP
+iptables -t filter -A FORWARD -j DROP
 
 iptables -t mangle -F POSTROUTING
 
