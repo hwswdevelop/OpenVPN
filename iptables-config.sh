@@ -8,7 +8,6 @@ iptables -t filter -A INPUT -i lo -s 127.0.0.1 -d 127.0.0.1 -m state --state EST
 iptables -t filter -A INPUT -i ${WAN} -p udp --sport 67 --dport 68 -m state --state ESTABLISHED -j ACCEPT
 iptables -t filter -A INPUT -i ${WAN} -p icmp --icmp-type 0 -m state --state ESTABLISHED -j ACCEPT
 iptables -t filter -A INPUT -i ${WAN} -p udp --sport 53 -m state --state ESTABLISHED -j ACCEPT
-iptables -t filter -A INPUT -i ${WAN} -p udp --sport 443 -m state --state ESTABLISHED -j ACCEPT
 iptables -t filter -A INPUT -i ${WAN} -p tcp --dport 22 -m state --state ESTABLISHED -j ACCEPT
 iptables -t filter -A INPUT -i ${WAN} -p tcp --dport 443 -m state --state ESTABLISHED -j ACCEPT
 iptables -t filter -A INPUT -i ${WAN} -p tcp --dport 22 -m state --state NEW -m limit --limit 3/min --limit-burst 3 -j DROP
@@ -22,7 +21,6 @@ iptables -t filter -A OUTPUT -o lo -s 127.0.0.1 -d 127.0.0.1 -j ACCEPT
 iptables -t filter -A OUTPUT -o ${WAN} -p udp --dport 67 --sport 68 -j ACCEPT
 iptables -t filter -A OUTPUT -o ${WAN} -p udp --dport 53 -j ACCEPT
 iptables -t filter -A OUTPUT -o ${WAN} -p icmp --icmp-type 8 -j ACCEPT
-iptables -t filter -A OUTPUT -o ${WAN} -p tcp --dport 443 -j ACCEPT
 iptables -t filter -A OUTPUT -o ${WAN} -p tcp --sport 22 -j ACCEPT
 iptables -t filter -A OUTPUT -o ${WAN} -p tcp --sport 443 -j ACCEPT
 iptables -t filter -A OUTPUT -j DROP
